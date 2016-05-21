@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CollapseLayout_LayoutParams">
+        <attr name="clScaleX" format="float"/>
+        <attr name="clScaleY" format="float"/>
+        <attr name="clScale" format="float"/>
+        <attr name="clWidth" format="dimension"/>
+        <attr name="clHeight" format="dimension"/>
+        <attr name="clMarginLeft" format="dimension"/>
+        <attr name="clMarginRight" format="dimension"/>
+        <attr name="clMarginTop" format="dimension"/>
+        <attr name="clMarginBottom" format="dimension"/>
+        <attr name="clAlpha" format="float"/>
+        <attr name="clScrim" format="reference|color"/>
+        <attr name="clTextColor" format="color"/>
+        <attr name="clMode">
+            <flag name="center" value="0"/>
+            <flag name="out" value="1"/>
+            <flag name="none" value="2"/>
+        </attr>
+        <attr name="clInterpolator" format="reference"/>
+        <attr name="clScaleXInterpolator" format="reference"/>
+        <attr name="clScaleYInterpolator" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="CollapseRelativeBar">
+        <attr name="clBarHeight" format="dimension"/>
+        <attr name="clStatusBarScrim" format="reference|color"/>
+        <attr name="clAnimDuration" format="integer"/>
+    </declare-styleable>
+</resources>

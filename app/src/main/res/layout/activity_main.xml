@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.touko.ui.MainActivity">
+
+    <me.touko.library.ui.CollapseRelativeBar
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:clBarHeight="50dp"
+        app:clStatusBarScrim="@android:color/holo_blue_dark">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:clScrim="@android:color/holo_blue_dark"
+            app:clMarginBottom="20dp"
+            android:layout_centerInParent="true"
+            android:background="@android:color/holo_green_light"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/icon"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerInParent="true"
+            app:clMode="center"
+            app:clScale="0.3"
+            app:clInterpolator="@android:anim/overshoot_interpolator"
+            android:src="@drawable/icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello"
+            android:textSize="30sp"
+            android:textColor="@android:color/holo_orange_light"
+            android:layout_toLeftOf="@id/icon"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            app:clMarginLeft="20dp"
+            app:clTextColor="@android:color/white"
+            app:clMode="center"
+            app:clScale="0.7"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I will out"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            android:layout_toRightOf="@id/icon"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            app:clMode="out"
+            app:clInterpolator="@android:anim/accelerate_interpolator"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="I will dismiss"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            app:clMode="center"
+            app:clAlpha="0"/>
+
+    </me.touko.library.ui.CollapseRelativeBar>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/CollapseRelativeBarScrollViewBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <ImageView
+                style="@style/content_image"/>
+            <ImageView
+                style="@style/content_image"/>
+            <ImageView
+                style="@style/content_image"/>
+            <ImageView
+                style="@style/content_image"/>
+            <ImageView
+                style="@style/content_image"/>
+            <ImageView
+                style="@style/content_image"/>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>
