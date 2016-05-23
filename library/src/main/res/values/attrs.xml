@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="CollapseLayout_LayoutParams">
-        <attr name="clScaleX" format="float"/>
-        <attr name="clScaleY" format="float"/>
-        <attr name="clScale" format="float"/>
-        <attr name="clWidth" format="dimension"/>
-        <attr name="clHeight" format="dimension"/>
-        <attr name="clMarginLeft" format="dimension"/>
-        <attr name="clMarginRight" format="dimension"/>
-        <attr name="clMarginTop" format="dimension"/>
-        <attr name="clMarginBottom" format="dimension"/>
-        <attr name="clAlpha" format="float"/>
-        <attr name="clScrim" format="reference|color"/>
-        <attr name="clTextColor" format="color"/>
-        <attr name="clMode">
-            <flag name="center" value="0"/>
-            <flag name="out" value="1"/>
-            <flag name="none" value="2"/>
+        <attr name="clScaleX" format="float"/> <!-- 折叠时scaleX, 默认初始状态的scaleX -->
+        <attr name="clScaleY" format="float"/> <!-- 折叠时scaleY, 默认初始状态的scaleY -->
+        <attr name="clScale" format="float"/> <!-- 折叠时scale, 默认初始状态的scaleX -->
+        <attr name="clWidth" format="dimension"/> <!-- 折叠时宽度, 默认初始状态的width -->
+        <attr name="clHeight" format="dimension"/> <!-- 折叠时高度, 默认初始状态的height -->
+        <attr name="clMarginLeft" format="dimension"/> <!-- 折叠时，相对左边界的margin -->
+        <attr name="clMarginRight" format="dimension"/> <!-- 折叠时，相对右边界的margin -->
+        <attr name="clMarginTop" format="dimension"/> <!-- 折叠时，相对于上边界的margin -->
+        <attr name="clMarginBottom" format="dimension"/> <!-- 折叠时，相对于展开状态下边界的marigin -->
+        <attr name="clAlpha" format="float"/> <!-- 折叠时的alpha， 默认初始状态的alpha -->
+        <attr name="clScrim" format="reference|color"/> <!-- 折叠时的遮罩，默认空 -->
+        <attr name="clTextColor" format="color"/> <!-- 折叠时TextView字体颜色，只对TextView有效 -->
+        <attr name="clMode"> <!-- 默认折叠模式为center-->
+            <flag name="center" value="0"/> <!-- 折叠时view竖直居中 -->
+            <flag name="out" value="1"/> <!-- 折叠时view从上边界离开 -->
+            <flag name="none" value="2"/> <!-- 折叠时view竖直位置只由clMarginBottom决定 -->
         </attr>
-        <attr name="clInterpolator" format="reference"/>
-        <attr name="clScaleXInterpolator" format="reference"/>
-        <attr name="clScaleYInterpolator" format="reference"/>
+        <attr name="clInterpolator" format="reference"/> <!-- 折叠时动画插值器 -->
+        <attr name="clScaleXInterpolator" format="reference"/> <!-- 折叠时ScaleX动画插值器 -->
+        <attr name="clScaleYInterpolator" format="reference"/> <!-- 折叠时ScaleY动画插值器 -->
     </declare-styleable>
 
     <declare-styleable name="CollapseRelativeBar">
-        <attr name="clBarHeight" format="dimension"/>
-        <attr name="clStatusBarScrim" format="reference|color"/>
-        <attr name="clAnimDuration" format="integer"/>
+        <attr name="clBarHeight" format="dimension"/> <!-- 折叠时高度，可选，默认系统ActionBar高度 -->
+        <attr name="clStatusBarScrim" format="reference|color"/> <!-- 折叠时状态栏遮罩，只在api 19及以上有效果，并且需要在设置android:windowTranslucentNavigation=true,android:windowTranslucentStatus=true -->
+        <attr name="clAnimDuration" format="integer"/> <!-- 折叠动画时间长度，单位毫秒，可选，默认250毫秒 -->
     </declare-styleable>
 </resources>

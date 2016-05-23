@@ -70,7 +70,7 @@ public class CollapseRelativeBar extends RelativeLayout {
 
   private Drawable statusBarScrim;
 
-  private final Set<CollapseObServer> collapseObServers = new HashSet<>();
+  private final Set<CollapseHandler> collapseHandlers = new HashSet<>();
 
   private int COLLAPSED_HEIGHT;
 
@@ -113,10 +113,18 @@ public class CollapseRelativeBar extends RelativeLayout {
     typedArray.recycle();
   }
 
+  /**
+   * 是否已折叠
+   *
+   */
   public boolean isCollapsed() {
     return getHeight() == COLLAPSED_HEIGHT;
   }
 
+  /**
+   * 是否已展开
+   *
+   */
   public boolean isExpanded() {
     return getHeight() == initHeight;
   }
@@ -147,6 +155,11 @@ public class CollapseRelativeBar extends RelativeLayout {
     });
   }
 
+  /**
+   * 展开CollapseRelativeBar
+   *
+   * @param duration 动画时长
+   */
   public void runAutoExpand(long duration) {
     animRunnable.stop();
 
@@ -157,6 +170,11 @@ public class CollapseRelativeBar extends RelativeLayout {
         AnimRunnable.EXPAND_ACTION);
   }
 
+  /**
+   * 收拢CollapseRelativeBar
+   *
+   * @param duration 动画时长
+   */
   public void runAutoCollapse(long duration) {
     animRunnable.stop();
 
@@ -454,19 +472,29 @@ public class CollapseRelativeBar extends RelativeLayout {
     return true;
   }
 
-  public void removeCollapseListener(CollapseObServer collapseObServer) {
-    collapseObServers.remove(collapseObServer);
+  /**
+   * 增加CollapseHandler
+   *
+   * @param collapseHandler 折叠过程动画处理者
+   */
+  public void addCollapseHandler(CollapseHandler collapseHandler) {
+    collapseHandlers.add(collapseHandler);
   }
 
-  public void addCollapseListeners(CollapseObServer collapseObServer) {
-    collapseObServers.add(collapseObServer);
+  /**
+   * 移除CollapseHandler
+   *
+   * @param collapseHandler 折叠过程动画处理者
+   */
+  public void removeCollapseHandler(CollapseHandler collapseHandler) {
+    collapseHandlers.remove(collapseHandler);
   }
 
   private boolean letListenerHandle(View child, float percent) {
-    if (collapseObServers.isEmpty()) {
+    if (collapseHandlers.isEmpty()) {
       return false;
     }
-    for (CollapseObServer observer : collapseObServers) {
+    for (CollapseHandler observer : collapseHandlers) {
       if (observer.onCollapseTransition(this, child, percent)) {
         return true;
       }
@@ -475,10 +503,10 @@ public class CollapseRelativeBar extends RelativeLayout {
   }
 
   private void notifyAfterTransition(View child, float percent) {
-    if (collapseObServers.isEmpty()) {
+    if (collapseHandlers.isEmpty()) {
       return;
     }
-    for (CollapseObServer observer : collapseObServers) {
+    for (CollapseHandler observer : collapseHandlers) {
       observer.afterCollapseTransition(this, child, percent);
     }
   }
@@ -778,26 +806,25 @@ public class CollapseRelativeBar extends RelativeLayout {
   }
 
   /**
-   * CollapseObServer can listen or handle transition
+   * CollapseHandler可以完全自定义折叠过程动画
    */
-  public interface CollapseObServer {
+  public interface CollapseHandler {
     /**
-     * listen or handle transition
+     * 折叠过程回调，处理折叠动画
      *
      * @param parent  CollapseRelativeBar
-     * @param child   the child to transition
-     * @param percent collapse percent
-     * @return if return true, CollapseRelativeBar will think transition be done by you,
-     * and will not handle the transition of the child
+     * @param child   需处理的子view
+     * @param percent 目前折叠进度的百分比
+     * @return 如果return true, CollapseRelativeBar会认为你已经处理了折叠变换，不会自动对child进行折叠处理。
      */
     boolean onCollapseTransition(CollapseRelativeBar parent, View child, float percent);
 
     /**
-     * listen transition
+     * 监听折叠过程
      *
      * @param parent  CollapseRelativeBar
-     * @param child   the child to transition
-     * @param percent collapse percent
+     * @param child   处理后的子view
+     * @param percent 目前折叠进度的百分比
      */
     void afterCollapseTransition(CollapseRelativeBar parent, View child, float percent);
   }
