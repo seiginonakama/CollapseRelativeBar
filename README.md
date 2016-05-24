@@ -6,7 +6,7 @@ CollapseRelativeBar继承于RelativeLayout，展开时子view布局同RelativeLa
 ***
 ##Usage
 ###1. xml布局
-    自身可用自定义参数:
+自身可用自定义参数:
 ```xml
     <declare-styleable name="CollapseRelativeBar">
         <attr name="clBarHeight" format="dimension"/> <!-- 折叠时高度，可选，默认系统ActionBar高度 -->
@@ -15,7 +15,7 @@ CollapseRelativeBar继承于RelativeLayout，展开时子view布局同RelativeLa
     </declare-styleable>
 ```
 
-    CollapseRelativeBar依赖CoordinatorLayout，如果CollapseRelativeBar不是CoordinatorLayout的直接子view，将不会正常工作。展开时，子view完全按照RelativeLayout的布局方式布局。折叠时，子view的状态用自定义属性定义。相邻的滑动view需要定义app:layout_behavior="@string/CollapseRelativeBarScrollViewBehavior"
+CollapseRelativeBar依赖CoordinatorLayout，如果CollapseRelativeBar不是CoordinatorLayout的直接子view，将不会正常工作。展开时，子view完全按照RelativeLayout的布局方式布局。折叠时，子view的状态用自定义属性定义。相邻的滑动view需要定义app:layout_behavior="@string/CollapseRelativeBarScrollViewBehavior"
 ```xml
 
 <android.support.design.widget.CoordinatorLayout

@@ -114,7 +114,7 @@ public class CollapseRelativeBar extends RelativeLayout {
   }
 
   /**
-   * 是否已折叠
+   * isCollapsed, equals getHeight() == COLLAPSED_HEIGHT
    *
    */
   public boolean isCollapsed() {
@@ -122,7 +122,7 @@ public class CollapseRelativeBar extends RelativeLayout {
   }
 
   /**
-   * 是否已展开
+   * isExpanded, equals getHeight() == initHeight
    *
    */
   public boolean isExpanded() {
@@ -156,9 +156,9 @@ public class CollapseRelativeBar extends RelativeLayout {
   }
 
   /**
-   * 展开CollapseRelativeBar
+   * run expand anim
    *
-   * @param duration 动画时长
+   * @param duration anim duration
    */
   public void runAutoExpand(long duration) {
     animRunnable.stop();
@@ -171,9 +171,9 @@ public class CollapseRelativeBar extends RelativeLayout {
   }
 
   /**
-   * 收拢CollapseRelativeBar
+   * run collapse anim
    *
-   * @param duration 动画时长
+   * @param duration anim duration
    */
   public void runAutoCollapse(long duration) {
     animRunnable.stop();
@@ -473,18 +473,18 @@ public class CollapseRelativeBar extends RelativeLayout {
   }
 
   /**
-   * 增加CollapseHandler
+   * add CollapseHandler
    *
-   * @param collapseHandler 折叠过程动画处理者
+   * @param collapseHandler a handler to handle child collapse anim
    */
   public void addCollapseHandler(CollapseHandler collapseHandler) {
     collapseHandlers.add(collapseHandler);
   }
 
   /**
-   * 移除CollapseHandler
+   * remove CollapseHandler
    *
-   * @param collapseHandler 折叠过程动画处理者
+   * @param collapseHandler a handler to handle child collapse anim
    */
   public void removeCollapseHandler(CollapseHandler collapseHandler) {
     collapseHandlers.remove(collapseHandler);
@@ -806,25 +806,27 @@ public class CollapseRelativeBar extends RelativeLayout {
   }
 
   /**
-   * CollapseHandler可以完全自定义折叠过程动画
+   * CollapseHandler
+   *
+   * a interface to custom child collapse anim
    */
   public interface CollapseHandler {
     /**
-     * 折叠过程回调，处理折叠动画
+     * can handle child collapse anim in this callback
      *
      * @param parent  CollapseRelativeBar
-     * @param child   需处理的子view
-     * @param percent 目前折叠进度的百分比
-     * @return 如果return true, CollapseRelativeBar会认为你已经处理了折叠变换，不会自动对child进行折叠处理。
+     * @param child   the view to handle collapse anim
+     * @param percent the progress of CollapseRelativeBar collapsing
+     * @return if return true, CollapseRelativeBar will not auto handle the child collapse anim
      */
     boolean onCollapseTransition(CollapseRelativeBar parent, View child, float percent);
 
     /**
-     * 监听折叠过程
+     * listen child collapse process
      *
      * @param parent  CollapseRelativeBar
-     * @param child   处理后的子view
-     * @param percent 目前折叠进度的百分比
+     * @param child   the view after handle
+     * @param percent the progress of CollapseRelativeBar collapsing
      */
     void afterCollapseTransition(CollapseRelativeBar parent, View child, float percent);
   }
