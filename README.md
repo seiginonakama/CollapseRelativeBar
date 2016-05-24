@@ -7,6 +7,9 @@ CollapseRelativeBar继承于RelativeLayout，展开时的子view布局同Relativ
 ***
 ##引入库
 ```gradle
+repositories {
+    jcenter()
+}
 dependencies {
     compile 'me.touko:CollapseRelativeBarLib:0.9.0'
 }
