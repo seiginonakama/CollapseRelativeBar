@@ -1,12 +1,21 @@
 #CollapseRelativeBar
 
 ***
-CollapseRelativeBar继承于RelativeLayout，展开时子view布局同RelativeLayout一致，扩展时子view状态用CollapseRelativeBar自定义属性定义。折叠和展开过程中，CollapseRelativeBar可以自动处理子view的过渡动画。
+CollapseRelativeBar继承于RelativeLayout，展开时的子view布局同RelativeLayout一致，扩展时的子view状态用CollapseRelativeBar自定义属性定义。折叠和展开过程中，CollapseRelativeBar可以自动处理子view的过渡动画。
 <center>![animated gif demo](http://o7ilr4hyc.bkt.clouddn.com/collapse_relative_bar_demo.gif)</center>
 ***
+***
+##引入库
+```gradle
+dependencies {
+    compile 'me.touko:CollapseRelativeBarLib:0.9.0'
+}
+```
+***
+
 ##Usage
 ###1. xml布局
-自身可用自定义参数:
+CollapseRelativeBar可用自定义属性:
 ```xml
     <declare-styleable name="CollapseRelativeBar">
         <attr name="clBarHeight" format="dimension"/> <!-- 折叠时高度，可选，默认系统ActionBar高度 -->
@@ -15,7 +24,7 @@ CollapseRelativeBar继承于RelativeLayout，展开时子view布局同RelativeLa
     </declare-styleable>
 ```
 
-CollapseRelativeBar依赖CoordinatorLayout，如果CollapseRelativeBar不是CoordinatorLayout的直接子view，将不会正常工作。展开时，子view完全按照RelativeLayout的布局方式布局。折叠时，子view的状态用自定义属性定义。相邻的滑动view需要定义app:layout_behavior="@string/CollapseRelativeBarScrollViewBehavior"
+展开时，子view完全按照RelativeLayout的布局方式布局。折叠时，子view的状态用自定义属性定义。相邻的滑动view需要定义app:layout_behavior="@string/CollapseRelativeBarScrollViewBehavior"
 ```xml
 
 <android.support.design.widget.CoordinatorLayout
@@ -59,7 +68,11 @@ CollapseRelativeBar依赖CoordinatorLayout，如果CollapseRelativeBar不是Coor
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>
 ```
-###2. 子view折叠时可用的自定义属性
+
+####注意：
+CollapseRelativeBar依赖CoordinatorLayout，如果CollapseRelativeBar不是CoordinatorLayout的直接子view，将不会正常工作。
+
+###2. 子view可用自定义属性
 ```xml
     <declare-styleable name="CollapseLayout_LayoutParams">
         <attr name="clScaleX" format="float"/> <!-- 折叠时scaleX, 默认初始状态的scaleX -->
