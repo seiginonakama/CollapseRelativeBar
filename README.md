@@ -90,7 +90,7 @@ CollapseRelativeBar依赖CoordinatorLayout，如果CollapseRelativeBar不是Coor
         <attr name="clMode"> <!-- 默认折叠模式为center-->
             <flag name="center" value="0"/> <!-- 折叠时view竖直居中 -->
             <flag name="out" value="1"/> <!-- 折叠时view从上边界离开 -->
-            <flag name="none" value="2"/> <!-- 折叠时view竖直位置只由clMarginBottom决定 -->
+            <flag name="none" value="2"/> <!-- 折叠时view竖直位置只由clMarginBottom或clMarginTop决定 -->
         </attr>
         <attr name="clInterpolator" format="reference"/> <!-- 折叠时动画插值器 -->
         <attr name="clScaleXInterpolator" format="reference"/> <!-- 折叠时ScaleX动画插值器 -->
