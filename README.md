@@ -1,7 +1,7 @@
 #CollapseRelativeBar
 
 ***
-CollapseRelativeBar继承于RelativeLayout，展开时的子view布局同RelativeLayout一致，扩展时的子view状态用CollapseRelativeBar自定义属性定义。折叠和展开过程中，CollapseRelativeBar可以自动处理子view的过渡动画。
+CollapseRelativeBar继承于RelativeLayout，展开时的子view布局同RelativeLayout一致，折叠时的子view状态用自定义属性定义。折叠和展开过程中，CollapseRelativeBar可以自动处理子view的过渡动画。
 <center>![animated gif demo](http://o7ilr4hyc.bkt.clouddn.com/collapse_relative_bar_demo.gif)</center>
 ***
 ***
