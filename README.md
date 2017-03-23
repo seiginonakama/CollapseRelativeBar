@@ -1,12 +1,12 @@
-#CollapseRelativeBar
+CollapseRelativeBar
+=============
 
-***
 CollapseRelativeBar继承于RelativeLayout，展开时的子view布局同RelativeLayout一致，折叠时的子view状态用自定义属性定义。折叠和展开过程中，CollapseRelativeBar可以自动处理子view的过渡动画。
 <center>![animated gif demo](http://o7ilr4hyc.bkt.clouddn.com/collapse_relative_bar_demo.gif)</center>
-***
-***
-##引入库
-```gradle
+
+引入库
+------
+```groovy
 repositories {
     jcenter()
 }
@@ -14,10 +14,10 @@ dependencies {
     compile 'me.touko:CollapseRelativeBarLib:0.9.0'
 }
 ```
-***
 
-##Usage
-###1. xml布局
+Usage
+------
+1. xml布局
 CollapseRelativeBar可用自定义属性:
 ```xml
     <declare-styleable name="CollapseRelativeBar">
@@ -75,7 +75,7 @@ CollapseRelativeBar可用自定义属性:
 ####注意：
 CollapseRelativeBar依赖CoordinatorLayout，如果CollapseRelativeBar不是CoordinatorLayout的直接子view，将不会正常工作。
 
-###2. 子view可用自定义属性
+2. 子view可用自定义属性
 ```xml
     <declare-styleable name="CollapseLayout_LayoutParams">
         <attr name="clScaleX" format="float"/> <!-- 折叠时scaleX, 默认初始状态的scaleX -->
@@ -101,7 +101,7 @@ CollapseRelativeBar依赖CoordinatorLayout，如果CollapseRelativeBar不是Coor
     </declare-styleable>
 ```
 
-###3. API
+3. API
 ```java
   /**
    * 展开CollapseRelativeBar
